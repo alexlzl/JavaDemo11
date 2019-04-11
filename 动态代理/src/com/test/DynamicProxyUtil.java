@@ -6,13 +6,14 @@ import java.lang.reflect.Proxy;
 
 public class DynamicProxyUtil {
     private  IDemo test;
+    private Class<IDemo>[] iDemoClass=new Class[]{IDemo.class};
     private int[] i=new int[]{0,2};
     public DynamicProxyUtil(IDemo iDemo){
         test=iDemo;
     }
 
     public  IDemo getProxy(){
-        return (IDemo) Proxy.newProxyInstance(test.getClass().getClassLoader(),test.getClass().getInterfaces(), new InvocationHandler() {
+        return (IDemo) Proxy.newProxyInstance(test.getClass().getClassLoader(),iDemoClass, new InvocationHandler() {
             @Override
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
                 System.out.println("代理类增加之前===========");
