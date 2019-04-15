@@ -1,5 +1,5 @@
 package com.test;
 
-public interface IDemo {
+public  interface IDemo {
     void  test();
 }
